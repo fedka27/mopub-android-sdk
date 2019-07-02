@@ -5,6 +5,7 @@
 package com.mopub.mobileads;
 
 public interface HtmlWebViewListener {
+    void onPageFinished();
     void onLoaded(BaseHtmlWebView mHtmlWebView);
     void onFailed(MoPubErrorCode unspecified);
     void onClicked();

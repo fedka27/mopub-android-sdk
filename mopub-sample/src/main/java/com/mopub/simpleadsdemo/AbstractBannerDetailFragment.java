@@ -94,6 +94,12 @@ public abstract class AbstractBannerDetailFragment extends Fragment implements B
     }
 
     // BannerAdListener
+
+    @Override
+    public void onBannerShown() {
+        logToast(getActivity(), getName() + " shown.");
+    }
+
     @Override
     public void onBannerLoaded(MoPubView banner) {
         logToast(getActivity(), getName() + " loaded.");

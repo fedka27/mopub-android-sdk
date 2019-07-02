@@ -40,6 +40,11 @@ public class HtmlInterstitialWebView extends BaseHtmlWebView {
         }
 
         @Override
+        public void onPageFinished() {
+            mCustomEventInterstitialListener.onInterstitialShown();
+        }
+
+        @Override
         public void onLoaded(BaseHtmlWebView mHtmlWebView) {
             mCustomEventInterstitialListener.onInterstitialLoaded();
         }

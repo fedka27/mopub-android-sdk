@@ -89,4 +89,10 @@ class HtmlWebViewClient extends WebViewClient {
                 .build().handleUrl(mContext, url, mHtmlWebView.wasClicked());
         return true;
     }
+
+    @Override
+    public void onPageFinished(WebView view, String url) {
+        super.onPageFinished(view, url);
+        mHtmlWebViewListener.onPageFinished();
+    }
 }

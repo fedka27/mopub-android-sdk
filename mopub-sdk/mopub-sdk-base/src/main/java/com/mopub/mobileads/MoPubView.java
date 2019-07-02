@@ -43,6 +43,7 @@ import static com.mopub.mobileads.MoPubErrorCode.ADAPTER_NOT_FOUND;
 
 public class MoPubView extends FrameLayout {
     public interface BannerAdListener {
+        public void onBannerShown();
         public void onBannerLoaded(MoPubView banner);
         public void onBannerFailed(MoPubView banner, MoPubErrorCode errorCode);
         public void onBannerClicked(MoPubView banner);
@@ -237,6 +238,13 @@ public class MoPubView extends FrameLayout {
             mAdViewController.resumeRefresh();
         } else {
             mAdViewController.pauseRefresh();
+        }
+    }
+
+    protected void adShown(){
+        MoPubLog.log(LOAD_SUCCESS);
+        if (mBannerAdListener != null) {
+            mBannerAdListener.onBannerShown();
         }
     }
 
