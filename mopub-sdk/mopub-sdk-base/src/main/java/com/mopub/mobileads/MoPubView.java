@@ -336,7 +336,7 @@ public class MoPubView extends FrameLayout {
     }
 
     protected void adShown(){
-        MoPubLog.log(LOAD_SUCCESS);
+        MoPubLog.log(SHOW_SUCCESS);
         if (mBannerAdListener != null) {
             mBannerAdListener.onBannerShown();
         }

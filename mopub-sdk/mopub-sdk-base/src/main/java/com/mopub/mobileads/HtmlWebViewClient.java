@@ -95,4 +95,9 @@ class HtmlWebViewClient extends WebViewClient {
         super.onPageFinished(view, url);
         mHtmlWebViewListener.onPageFinished();
     }
+
+    @Override
+    public void onPageCommitVisible(WebView view, String url) {
+        super.onPageCommitVisible(view, url);
+    }
 }

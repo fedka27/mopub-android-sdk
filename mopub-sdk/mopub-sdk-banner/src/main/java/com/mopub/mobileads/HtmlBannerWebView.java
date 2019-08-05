@@ -25,6 +25,8 @@ public class HtmlBannerWebView extends BaseHtmlWebView {
 
     static class HtmlBannerWebViewListener implements HtmlWebViewListener {
         private final CustomEventBannerListener mCustomEventBannerListener;
+        private boolean isLoaded = false;
+        private boolean isPageFinished = false;
 
         public HtmlBannerWebViewListener(CustomEventBannerListener customEventBannerListener) {
             mCustomEventBannerListener = customEventBannerListener;
@@ -32,12 +34,19 @@ public class HtmlBannerWebView extends BaseHtmlWebView {
 
         @Override
         public void onPageFinished() {
-            mCustomEventBannerListener.onBannerShown();
+            isPageFinished = true;
+            if (isLoaded) {
+                mCustomEventBannerListener.onBannerShown();
+            }
         }
 
         @Override
         public void onLoaded(BaseHtmlWebView htmlWebView) {
+            isLoaded = true;
             mCustomEventBannerListener.onBannerLoaded(htmlWebView);
+            if (isPageFinished){
+                mCustomEventBannerListener.onBannerShown();
+            }
         }
 
         @Override
